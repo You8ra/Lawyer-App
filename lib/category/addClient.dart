@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class addCustomer extends StatefulWidget {
@@ -8,6 +9,14 @@ class addCustomer extends StatefulWidget {
 }
 
 class _addCustomerState extends State<addCustomer> {
+  final formKey = GlobalKey<FormState>();
+  String id = '';
+  String name = '';
+  String adress = '';
+  String num_phone = '';
+
+  final Stream<QuerySnapshot> costumer =
+      FirebaseFirestore.instance.collection('costumer').snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
